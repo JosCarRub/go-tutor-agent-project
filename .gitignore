@@ -1,0 +1,132 @@
+.env
+.env.*
+!.env.example
+
+
+/go_tutor_backend/src/main/resources/application-local.properties
+
+
+# 2. DEPENDENCIAS Y ENTORNOS VIRTUALES
+# Python (Poetry/venv)
+/go_tutor_agent/.venv/
+/go_tutor_agent/venv/
+/go_tutor_agent/ENV/
+/go_tutor_agent/env/
+
+# Java
+/go_tutor_backend/.mvn/wrapper/maven-wrapper.jar
+# Java / Maven
+**/target/
+
+# Node.js 
+node_modules/
+npm-debug.log
+yarn-error.log
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+#FRONTEND
+**/dist/
+**/.astro/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# 3. ARTEFACTOS DE COMPILACIÓN Y CONSTRUCCIÓN
+# Python
+/go_tutor_agent/__pycache__/
+/go_tutor_agent/*.py[cod]
+/go_tutor_agent/*$py.class
+/go_tutor_agent/.eggs/
+/go_tutor_agent/dist/
+/go_tutor_agent/build/
+/go_tutor_agent/*.egg-info/
+
+# Java / Maven
+/go_tutor_backend/target/
+!/go_tutor_backend/src/main/**/target/
+!/go_tutor_backend/src/test/**/target/
+
+# Go 
+/go_executor_service/go-executor-service
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.eggs/
+**/build/
+**/*.egg-info/
+
+
+# 4. DATOS LOCALES Y VOLÚMENES
+# Base de datos vectorial de ChromaDB
+/go_tutor_agent/chroma_db/
+
+
+mongo-data/
+agent-chroma-data/
+grafana-data/
+
+
+# 5. LOGS Y ARCHIVOS TEMPORALES
+*.log
+*.log.*
+logs/
+*.tmp
+*.swp
+*.bak
+
+
+# 6. ARCHIVOS DE IDE Y SISTEMAS OPERATIVOS
+# General
+.DS_Store
+Thumbs.db
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Visual Studio Code
+.vscode/
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/settings.json
+
+# STS / Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+
+# 7. ARCHIVOS DE REPORTE Y SALIDA
+# Salida de Repomix
+repomix-output.txt
+
+# Reportes de cobertura de tests
+coverage.xml
+.coverage

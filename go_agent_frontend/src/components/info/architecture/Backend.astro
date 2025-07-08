@@ -1,0 +1,150 @@
+
+<section class="py-16 sm:py-20 bg-[var(--bg-secondary)]/50 border-y border-[var(--border)]">
+    <div class="max-w-6xl xl:max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+  
+        <div class="text-center md:text-left md:order-1">
+          <h2 class="text-3xl xl:text-4xl font-bold text-[var(--text-primary)]">Backend Robusto y Escalable</h2>
+          <p class="mt-4 text-lg text-[var(--text-secondary)]">
+            El corazón del sistema está impulsado por Spring Boot, garantizando una base empresarial, segura y preparada para crecer.
+          </p>
+          <ul class="mt-8 space-y-6 text-left">
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg"><img src="/icons/spring-boot.svg" class="h-12 w-12" alt="Spring Boot Icon" /></div>
+              <div>
+                <h3 class="font-semibold text-[var(--text-primary)]">Spring Boot & Java</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Un ecosistema maduro para la gestión de API, seguridad y persistencia de datos en MongoDB.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg"><img src="/icons/mongo.svg" class="h-12 w-12" alt="Observability Icon" /></div>
+              <div>
+                <h3 class="font-semibold text-[var(--text-primary)]">Guardado de conversaciones</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Captura de los intereses de la comunidad para regular las funciones del agente según lo demandado por los usuarios</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg"><img src="/icons/junit.svg" class="h-12 w-12" alt="Code Quality Icon" /></div>
+              <div>
+                <h3 class="font-semibold text-[var(--text-primary)]">Calidad de Código</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Principios SOLID, tests con JUnit5/Mockito y código limpio con Lombok como pilares del desarrollo.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="relative w-full min-h-[400px] flex items-center justify-center md:order-2">
+          <div class="w-full space-y-4">
+            
+            <div class="flex justify-center">
+                <div class="diagram-box">
+                    <img src="/icons/astro.svg" class="h-6 w-6" alt="Spring Boot Icon" />
+                <span>Frontend</span> 
+                </div>
+            </div>
+  
+            <div class="flex justify-center text-2xl text-[var(--text-secondary)] font-mono">↕</div>
+  
+
+            <div class="flex justify-center">
+              <div class="diagram-box-main">
+                <img src="/icons/spring-boot.svg" class="h-6 w-6" alt="Spring Boot Icon" />
+                <span>Backend</span>
+              </div>
+            </div>
+  
+            <!-- Líneas de Conexión -->
+            <div class="relative h-12">
+
+                <svg class="absolute inset-0 w-full h-full" width="100%" height="100%">
+                  <!-- Definición de la flecha -->
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10"
+                            refX="10" refY="5"
+                            markerWidth="6" markerHeight="6"
+                            orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#fffff" />
+                    </marker>
+                  </defs>
+              
+                  <!-- Línea a Agente con flechas en ambos extremos -->
+                  <line id="agente"
+                        x1="50%" y1="0"
+                        x2="85%" y2="100%"
+                        stroke="var(--border)"
+                        stroke-width="2"
+                        stroke-dasharray="4 4"
+                        marker-start="url(#arrow)"
+                        marker-end="url(#arrow)" />
+              
+                  <!-- Línea a MongoDB -->
+                  <line x1="50%" y1="0" x2="15%" y2="100%"
+                        stroke="var(--border)"
+                        stroke-width="2"
+                        stroke-dasharray="4 4" />
+              
+                  <!-- Línea a Prometheus -->
+                  <line x1="50%" y1="0" x2="50%" y2="100%"
+                        stroke="var(--border)"
+                        stroke-width="2"
+                        stroke-dasharray="4 4" />
+                </svg>
+              </div>
+              
+  
+            <!-- Fila Inferior: Dependencias -->
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <!-- MongoDB -->
+              <div class="space-y-2">
+                <div class="diagram-box">
+                  <img src="/icons/mongo.svg" class="h-5 w-5" alt="MongoDB"/>
+                  <span>MongoDB</span>
+                </div>
+              </div>
+              <!-- Prometheus -> Grafana -->
+              <div class="space-y-2">
+                <div class="diagram-box">
+                  <img src="/icons/prometheus.svg" class="h-5 w-5" alt="Prometheus"/>
+                  <span>Prometheus</span>
+                </div>
+                <div class="text-xl text-[var(--text-secondary)]">↓</div>
+                <div class="diagram-box">
+                  <img src="/icons/grafana.svg" class="h-5 w-5" alt="Grafana"/>
+                  <span>Grafana</span>
+                </div>
+              </div>
+              <!-- Agente IA -->
+              <div class="space-y-2">
+                <div class="diagram-box">
+                  <img src="/go.svg" class="h-7 w-7" alt="Python"/>
+                  <span>Tutor Agent</span><span class="text-[var(--go-color)]">.</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <style is:global>
+    .diagram-box, .diagram-box-main {
+      padding: 0.75rem 1.25rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .diagram-box-main {
+      background-color: var(--bg-primary);
+      border-color: var(--go-color);
+      padding: 1rem 1.5rem;
+    }
+  </style>

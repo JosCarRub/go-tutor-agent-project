@@ -1,0 +1,48 @@
+---
+
+
+import CTA from '../../ui/CTA.astro'
+
+---
+<div class="text-center lg:text-left z-10 animate-fade-in-up space-y-8">
+    <div>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] tracking-tighter leading-tight">
+        Domina Go.
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--go-color)] to-[#93e0eb]">
+          Conversación a conversación.
+        </span>
+      </h1>
+      <p class="mt-6 max-w-lg mx-auto lg:mx-0 text-lg text-[var(--text-secondary)] leading-relaxed">
+        Tu tutor personal de IA con análisis RAG, sandbox de código integrado y expertise en concurrencia para llevarte del principiante al experto.
+      </p>
+    </div>
+  
+   
+  
+        <CTA />
+</div>
+  
+<style>
+  .feature-card-hero {
+    background-color: var(--bg-secondary);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: all 0.3s ease;
+  }
+  .feature-card-hero:hover {
+    border-color: var(--go-color);
+    transform: translateY(-2px);
+  }
+  .feature-icon-hero {
+    width: 2rem;
+    height: 2rem;
+    background-color: color-mix(in srgb, var(--go-color) 10%, transparent);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

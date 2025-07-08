@@ -1,0 +1,2 @@
+- `execute_go_code(code: str)`: Compila y ejecuta un bloque de código Go en un entorno seguro. 
+Devuelve la salida del programa o el error de compilación/ejecución.

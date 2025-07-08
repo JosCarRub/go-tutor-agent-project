@@ -1,0 +1,36 @@
+---
+import HeroContent from "./hero/HeroContent.astro"
+import FloatingGopher from "./hero/FloatingGopher.astro"
+import ChatPreview from "./hero/ChatPreview.astro"
+---
+<section id="hero" class="relative w-full overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-[90vh] py-16 sm:py-24">
+      
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-[var(--go-color)]/4 dark:bg-[var(--go-color)]/8 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--go-color)]/2 dark:bg-[var(--go-color)]/4 rounded-full blur-2xl -z-10 opacity-30"></div>
+
+
+      <div class="w-full max-w-xl">
+        <HeroContent />
+      </div>
+
+      <div class="relative w-full max-w-md flex justify-center items-center animate-fade-in-up lg:justify-end" style="animation-delay: 600ms;">
+        <FloatingGopher />
+        <ChatPreview />
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+</style>

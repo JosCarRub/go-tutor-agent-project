@@ -1,0 +1,76 @@
+<section class="py-16 sm:py-20 bg-[var(--bg-secondary)]/50 border-y border-[var(--border)]">
+    <div class="max-w-6xl xl:max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        
+
+        <div class="text-center md:text-left md:order-1">
+          <h2 class="text-3xl xl:text-4xl font-bold text-[var(--text-primary)]">Monitoreo y Observabilidad</h2>
+          <p class="mt-4 text-lg text-[var(--text-secondary)]">
+            Un sistema observable es un sistema fiable. Go Tutor Agent cuenta con un stack de monitoreo completo para visualizar la salud y el rendimiento de cada componente en tiempo real.
+          </p>
+          <ul class="mt-8 space-y-6 text-left">
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <img src="/icons/prometheus.svg" class="h-12 w-12" alt="Prometheus Icon" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-[var(--text-primary)]">Prometheus</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Recolecta métricas clave de rendimiento y negocio tanto del backend como del agente de IA.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <img src="/icons/loki.svg" class="h-12 w-12" alt="Loki & Promtail Icon" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-[var(--text-primary)]">Loki & Promtail</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Promtail captura los logs de todos nuestros contenedores Docker, que son agregados y consultados a través de Loki.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <img src="/icons/grafana.svg" class="h-12 w-12" alt="Grafana Icon" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-[var(--text-primary)]">Grafana</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Nuestro centro de mando visual, donde correlacionamos métricas y logs en dashboards para una visión completa del sistema.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+  
+
+        <div class="relative w-full min-h-[400px] flex items-center justify-center md:order-2">
+          <div class="w-full text-center space-y-4">
+            <div class="flex justify-center gap-8">
+              <div class="text-center space-y-2">
+                <div class="diagram-box-side">
+                  <img src="/icons/prometheus.svg" class="h-12 w-12" alt="Prometheus"/>
+                  <span>Métricas</span>
+                </div>
+                <p class="text-xs text-[var(--text-secondary)]">Backend & Agente</p>
+              </div>
+              <div class="text-center space-y-2">
+                <div class="diagram-box-side">
+                  <img src="/icons/loki.svg" class="h-12 w-12" alt="Loki"/>
+                  <span>Logs</span>
+                </div>
+                <p class="text-xs text-[var(--text-secondary)]">Contenedores Docker</p>
+              </div>
+            </div>
+            <div class="flex justify-center gap-24">
+              <div class="text-2xl text-[var(--text-secondary)]">↓</div>
+              <div class="text-2xl text-[var(--text-secondary)]">↓</div>
+            </div>
+            <div class="flex justify-center">
+              <div class="diagram-box-main p-6">
+                <img src="/icons/grafana.svg" class="h-12 w-12" alt="Grafana"/>
+                <span class="text-lg">Panel de Control en Grafana</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>

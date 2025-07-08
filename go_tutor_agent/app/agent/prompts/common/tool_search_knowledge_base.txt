@@ -1,0 +1,1 @@
+- `search_knowledge_base(query: str)`: Busca una pregunta en toda la información que has memorizado previamente.

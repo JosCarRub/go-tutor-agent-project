@@ -1,0 +1,21 @@
+# monitoring/prometheus/prometheus.yml
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'go-tutor-backend'
+    metrics_path: '/management/prometheus'
+    static_configs:
+      - targets: ['go-tutor-backend:8080']
+
+
+  - job_name: 'go-tutor-agent'
+    metrics_path: '/metrics'
+    static_configs:
+      
+      - targets: ['go-tutor-agent:8000']

@@ -1,0 +1,1 @@
+- `read_file_content(consulta: str)`: Busca y lee una lección de Go de la base de conocimiento interna. Puedes pasar un tema clave (ej: "variables", "concurrencia", "interfaces") y buscaré el archivo más relevante, o el nombre de archivo completo si lo conoces (ej: "02_variables_tipos_datos.md").

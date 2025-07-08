@@ -1,0 +1,153 @@
+version: '3.8'
+
+services:
+  # --- Frontend ---
+  go-agent-frontend:
+    build:
+      context: ./go_agent_frontend
+      dockerfile: Dockerfile
+    container_name: go-agent-frontend-app
+    ports:
+      - "4321:4321"
+    depends_on:
+      - go-tutor-backend
+    networks:
+      - app-network
+
+
+  # --- spring ---
+  go-tutor-backend:
+    build:
+      context: ./go_tutor_backend 
+      dockerfile: Dockerfile
+    container_name: go-tutor-backend-app
+    ports:
+      - "8080:8080"
+    environment:
+      - GO_AGENT_BASE_URL=http://go-tutor-agent:8000
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/go_tutor_db
+      - SPRING_PROFILES_ACTIVE=local
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.Name}}"
+    depends_on:
+      - mongo
+      - go-tutor-agent 
+    networks:
+        - app-network
+
+  # --- agente  ---
+  go-tutor-agent:
+    build:
+      context: ./go_tutor_agent 
+    container_name: go-tutor-agent-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./go_tutor_agent/chroma_db:/agent/chroma_db
+      - ./go_tutor_agent/data:/agent/data
+    environment:
+      - GO_EXECUTOR_URL=${GO_EXECUTOR_URL}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.Name}}"
+    networks:
+      - app-network
+    # --- Go Executor ---
+  go-executor:
+    build:
+      context: ./go_executor_service
+      dockerfile: Dockerfile
+    container_name: go-executor-service
+    ports:
+      - "8090:8090"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # --- mongo ---
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express-ui
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_SITE_BASEURL=/
+      - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME} 
+      - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD} 
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  # --- monitoreo ---
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning/datasources/grafana-datasources.yml:/etc/grafana/provisioning/datasources/grafana-datasources.yml
+    networks:
+      - app-network
+
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - app-network
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+
+      - ./monitoring/promtail/promtail-config.yml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  grafana-data:
+  mongo-data:

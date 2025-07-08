@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import HeroInfo from '../components/info/HeroInfo.astro';
+
+import WorkFlowInfo from '../components/info/WorkFlowInfo.astro';
+
+import Frontend from '../components/info/architecture/Frontend.astro'
+
+import Backend from '../components/info/architecture/Backend.astro'
+
+import Agent from '../components/info/architecture/Agent.astro'
+
+import Monitoring from '../components/info/architecture/Monitoring.astro'
+
+
+import Deploy from '../components/info/architecture/Deploy.astro'
+---
+
+<Layout title="¿Qué es Go Tutor Agent?">
+  
+  <HeroInfo />
+ 
+  
+<WorkFlowInfo />
+
+<Frontend />
+
+
+<Backend />
+
+
+<Agent />
+
+<Monitoring />
+
+<Deploy />
+  
+
+
+
+  
+ 
+  
+
+  
+  <!--  LLAMADA A LA ACCIÓN FINAL -->
+  <section class="w-full py-16 sm:py-24 bg-[var(--bg-secondary)]/50 border-t border-[var(--border)]">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <h2 class="text-3xl xl:text-4xl font-bold text-[var(--text-primary)]">¿Listo para ponerlo a prueba?</h2>
+      <p class="mt-4 text-lg xl:text-xl text-[var(--text-secondary)]">
+        Ahora que conoces el potencial que hay detrás, vuelve al chat y desafía al tutor con tus preguntas más complejas sobre Go.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center justify-center px-8 py-4 bg-[var(--go-color)] text-[var(--go-color-dark)] font-semibold rounded-lg shadow-lg hover:bg-[var(--go-color)]/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[var(--go-color)]/20 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:ring-[var(--go-color)]/50">
+          Volver al Chat
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  /* Estilos para el diagrama de flujo */
+  .flow-step {
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .flow-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .flow-arrow {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    align-self: center;
+    transform: rotate(90deg);
+  }
+  .flow-arrow-side {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+  }
+  @media (min-width: 768px) {
+    .flow-arrow {
+      transform: rotate(0deg);
+    }
+  }
+  .tool-chip {
+    padding: 0.25rem 0.75rem;
+    background-color: color-mix(in srgb, var(--go-color) 15%, transparent);
+    color: var(--go-color);
+    border: 1px solid var(--go-color);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Estilos para las placas de tecnología */
+  .tech-plate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    padding: 1.5rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tech-tooltip {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    opacity: 0;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--go-color-dark);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  .tech-plate-small {
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+</style>

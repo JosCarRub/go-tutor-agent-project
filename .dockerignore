@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vscode/
+target/
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+README.md

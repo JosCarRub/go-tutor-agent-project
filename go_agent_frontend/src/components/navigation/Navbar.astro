@@ -1,0 +1,130 @@
+---
+const navLinks = [
+  { href: "/", label: "Chat", icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.013 8.013 0 01-2.319-.34l-2.31 2.31a.5.5 0 01-.86-.35V18.6c-2.36-1.25-4-3.72-4-6.6 0-4.418 3.582-8 8-8s8 3.582 8 8z"></path></svg>` },
+  { href: "/info", label: "¿Qué es Go Tutor Agent?", icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>` },
+  { href: "/install", label: "Instalación Local", icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>` },
+
+];
+---
+<header class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-secondary)]/80 backdrop-blur-sm border-b border-[var(--border)]">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between h-16 items-center">
+      
+      <a href="/" class="flex-shrink-0 flex items-center gap-2 sm:gap-3 group" aria-label="Go Tutor Agent - Página de inicio">
+        <img src="/go.svg" alt="Go Logo" class="w-8 h-8 group-hover:scale-105 transition-transform duration-200" />
+        <span class="text-xl font-bold text-[var(--text-primary)] tracking-tight">
+          Tutor Agent<span class="text-[var(--go-color)]">.</span>
+        </span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map(link => (
+          <a href={link.href} class="nav-link" data-astro-prefetch>
+            <Fragment set:html={link.icon} />
+            {link.label}
+          </a>
+        ))}
+      </div>
+      
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="mobile-menu-button" class="action-button" aria-label="Abrir menú de navegación">
+          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="md:hidden fixed top-16 left-0 right-0 bg-[var(--bg-secondary)] border-b border-[var(--border)] shadow-lg hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      {navLinks.map(link => (
+        <a href={link.href} class="mobile-nav-link" data-astro-prefetch>
+          <Fragment set:html={link.icon} />
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav-link, .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+  }
+  .nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+  }
+  .nav-link[aria-current="page"] {
+    color: var(--go-color);
+    background-color: color-mix(in srgb, var(--go-color) 10%, transparent);
+  }
+  .mobile-nav-link {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  .mobile-nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+  }
+  .mobile-nav-link[aria-current="page"] {
+    color: var(--go-color);
+    background-color: color-mix(in srgb, var(--go-color) 10%, transparent);
+  }
+  .action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease-in-out;
+  }
+  .action-button:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+  }
+</style>
+
+<script>
+  // Script para el menú móvil y el tema
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    const isOpen = !mobileMenu?.classList.contains('hidden');
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden', !isOpen);
+    closeIcon?.classList.toggle('hidden', isOpen);
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  themeToggle?.addEventListener('click', () => {
+    const newTheme = html.classList.contains('light') ? 'dark' : 'light';
+    html.classList.remove('light', 'dark');
+    html.classList.add(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+</script>

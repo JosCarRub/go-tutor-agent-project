@@ -1,0 +1,168 @@
+---
+
+const localEnv = {
+  title: "Entorno Local",
+  subtitle: "Go Tutor Agent a máxima potencia",
+  icon: "/icons/docker-compose.svg",
+  features: [
+    "<strong>Desarrollo ultrarrápido (4 Workers):</strong> Simula un entorno de mayor carga y obtén respuestas instantáneas. Ideal para pruebas de estrés y desarrollo ágil.",
+    "<strong>Observabilidad profesional:</strong> Accede a Grafana y Prometheus para depurar, optimizar y entender el flujo de datos y el rendimiento como un profesional.",
+    "<strong>Control total de datos:</strong> Explora y manipula la base de datos con Mongo Express. Perfecto para experimentar, crear casos de prueba y entender la persistencia de datos.",
+    "<strong>Traza de pensamiento:</strong> Observa desde tu propia terminal el proceso de pensamiento de Go Tutot Agent mientras trabaja para tí",
+    "<strong>LLM a la carta:</strong> Configura y eligue tú mismo el modelo de lenguaje sobre el que quieres que corra Go Tutor Agent.",
+
+
+
+  ],
+  code: `CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", ...]`
+};
+
+const prodEnv = {
+  title: "Railway",
+  subtitle: "Optimizado y eficiente",
+  icon: "/icons/docker.svg",
+  features: [
+    "<strong>Imagen optimizada:</strong> Construida para ser ligera y cumplir con las restricciones de la plataforma de despliegue.",
+    "<strong>Eficiencia optimizada (1 Worker):</strong> Configuración ajustada para la capa gratuita de Railway, garantizando estabilidad y un uso eficiente de recursos.",
+    "<strong>Despliegue simplificado:</strong>Despliegue de todos los servicios necesarios para producción mediante Dockerfiles",
+  ],
+  code: `CMD ["gunicorn", "-w", "1", "-k", "uvicorn.workers.UvicornWorker", ...]`
+};
+---
+<section class="py-16 sm:py-20 bg-[var(--bg-secondary)]/50 border-y border-[var(--border)]">
+  <div class="max-w-6xl xl:max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 lg:mb-16">
+      <h2 class="text-3xl sm:text-4xl xl:text-4xl 2xl:text-5xl font-bold text-[var(--text-primary)]">Entornos: Desarrollo vs. Producción</h2>
+      <p class="mt-4 text-md lg:text-lg xl:text-xl 2xl:text-2xl text-[var(--text-secondary)]">Entiende las diferencias clave para sacar el máximo partido a cada entorno.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 md:divide-x md:divide-[var(--border)]">
+      
+      <div class="column-content">
+        <div class="env-header">
+          <img src={localEnv.icon} class="env-icon" alt="Docker Compose" />
+          <div>
+            <h3 class="text-xl 2xl:text-2xl font-bold text-[var(--text-primary)]">{localEnv.title}</h3>
+            <p class="text-sm 2xl:text-base text-[var(--text-secondary)]">{localEnv.subtitle}</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          {localEnv.features.map(feature => (
+            <li class="feature-item">
+              <span class="feature-checkmark">✓</span>
+              <span set:html={feature}></span>
+            </li>
+          ))}
+        </ul>
+        <div class="code-block-small">
+          <span class="comment"># Configuración de Workers en local</span>
+          <span class="command">{localEnv.code}</span>
+        </div>
+      </div>
+
+      <div class="column-content">
+        <div class="env-header">
+          <img src={prodEnv.icon} class="env-icon" alt="Docker" />
+          <div>
+            <h3 class="text-xl 2xl:text-2xl font-bold text-[var(--text-primary)]">{prodEnv.title}</h3>
+            <p class="text-sm 2xl:text-base text-[var(--text-secondary)]">{prodEnv.subtitle}</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          {prodEnv.features.map(feature => (
+            <li class="feature-item">
+              <span class="feature-checkmark">✓</span>
+              <span set:html={feature}></span>
+            </li>
+          ))}
+        </ul>
+        <div class="code-block-small">
+          <span class="comment"># Configuración en producción</span>
+          <span class="command">{prodEnv.code}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .column-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+  }
+  @media (max-width: 767px) {
+    .column-content:first-child {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .column-content:last-child {
+      padding-top: 2rem;
+    }
+  }
+
+  .env-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .env-icon {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+  }
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.6;
+  }
+  .feature-checkmark {
+    color: var(--go-color);
+    font-weight: 600;
+    margin-top: 0.125rem; 
+  }
+  .feature-list strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .code-block-small {
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin-top: auto; 
+  }
+  
+  @media (min-width: 1536px) { 
+    .feature-list {
+      font-size: 1rem;
+    }
+    .code-block-small {
+      font-size: 0.875rem; 
+    }
+  }
+
+  .code-block-small .comment {
+    color: #6a9955;
+    font-style: italic;
+    display: block;
+  }
+  .code-block-small .command {
+    color: #d4d4d4;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+</style>

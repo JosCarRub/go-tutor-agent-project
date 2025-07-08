@@ -1,0 +1,10 @@
+---
+
+import ChatInterface from './ChatInterface.tsx';
+
+export interface Props {
+  apiEndpoint: string;
+}
+const { apiEndpoint } = Astro.props;
+---
+<ChatInterface client:load apiEndpoint={apiEndpoint} />

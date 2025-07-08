@@ -1,0 +1,139 @@
+---
+---
+<div id="playground-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none data-[state=open]:opacity-100 data-[state=open]:pointer-events-auto transition-opacity duration-300">
+  
+  <div id="playground-container" class="relative w-full max-w-4xl bg-[#282c34] rounded-xl shadow-2xl border border-white/10 flex flex-col transform scale-95 data-[state=open]:scale-100 transition-transform duration-300 h-[85vh] data-[maximized=true]:w-[95vw] data-[maximized=true]:h-[95vh] data-[maximized=true]:max-w-none">
+    
+    <div class="flex items-center justify-between p-3 border-b border-white/10 flex-shrink-0">
+      <div class="flex items-center gap-2">
+
+        <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f57]"></div>
+        <div class="w-3.5 h-3.5 rounded-full bg-[#febc2e]"></div>
+
+        <button data-action="maximize" class="w-3.5 h-3.5 rounded-full bg-[#28c840] flex items-center justify-center text-black/50 hover:text-black">
+          <svg class="w-2 h-2" viewBox="0 0 8 8" fill="currentColor"><path d="M0 0h8v2H0zM0 3h2v5H0zM6 3h2v5H6zM0 8h8v2H0z" stroke="currentColor" stroke-width="1.5"></path></svg>
+        </button>
+      </div>
+      <div class="text-sm text-gray-100"><span class="text-[var(--go-color)]">Go Tutor </span>Agent <span class="text-teal-300">CODE</span><span class="text-red-300">.</span></div>
+
+      <button data-action="close" class="p-1 rounded-full hover:bg-red-400 text-gray-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <div class="flex-grow bg-[#282c34] overflow-hidden">
+      <textarea id="code-editor-textarea" class="w-full h-full bg-transparent text-left p-4 text-sm text-gray-300 font-mono resize-none border-none focus:outline-none leading-relaxed" spellcheck="false"></textarea>
+    </div>
+
+
+    <div class="flex items-center justify-between p-2 border-t border-white/10 text-xs text-gray-400 flex-shrink-0 bg-black/20">
+      <div class="flex items-center gap-4">
+        <span class="text-[var(--go-color)]">Go</span> 
+        <span>UTF-8</span>
+        <span>LF</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button data-action="clear" class="px-3 py-1 text-xs font-medium text-gray-300 bg-white/5 hover:bg-white/10 rounded-md transition-colors">
+          Limpiar
+        </button>
+        <button data-action="copy" class="px-3 py-1 text-xs font-medium text-gray-300 bg-white/5 hover:bg-white/10 rounded-md transition-colors">
+          Copiar Código
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const initialCode = `package main
+
+import "fmt"
+
+// Escribe tu código y copia tu código con el botón inferior.
+
+
+func main() {
+    fmt.Println("¡Hola, Gopher!")
+}`;
+
+  const modal = document.getElementById('playground-modal') as HTMLElement | null;
+  const modalContainer = document.getElementById('playground-container') as HTMLElement | null;
+  const editorTextarea = document.getElementById('code-editor-textarea') as HTMLTextAreaElement | null;
+  
+  function openModal() {
+    if (!modal || !modalContainer || !editorTextarea) return;
+    if (!editorTextarea.value) editorTextarea.value = initialCode;
+    modal.dataset.state = 'open';
+    modalContainer.dataset.state = 'open';
+  }
+
+  function closeModal() {
+    if (!modal || !modalContainer) return;
+    modal.dataset.state = 'closed';
+    modalContainer.dataset.state = 'closed';
+  }
+
+  function toggleMaximize() {
+    if (!modalContainer) return;
+    const isMaximized = modalContainer.dataset.maximized === 'true';
+    modalContainer.dataset.maximized = String(!isMaximized);
+  }
+
+  function clearCode() {
+    if (editorTextarea) editorTextarea.value = '';
+  }
+
+  function copyCode(copyBtn: HTMLButtonElement) {
+    if (editorTextarea) {
+      navigator.clipboard.writeText(editorTextarea.value).then(() => {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '¡Copiado!';
+        copyBtn.style.color = '#28c840';
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+          copyBtn.style.color = '';
+        }, 2000);
+      });
+    }
+  }
+
+
+  document.addEventListener('click', (e: MouseEvent) => {
+    const target = e.target as Element;
+    
+    if (target.closest('#open-playground-btn')) {
+      openModal();
+      return;
+    }
+    
+    if (e.target === modal) {
+      closeModal();
+      return;
+    }
+
+    const actionButton = target.closest('button[data-action]') as HTMLButtonElement | null;
+    if (actionButton && modalContainer?.contains(actionButton)) {
+      const action = actionButton.dataset.action;
+      switch (action) {
+        case 'close':
+          closeModal();
+          break;
+        case 'maximize':
+          toggleMaximize();
+          break;
+        case 'clear':
+          clearCode();
+          break;
+        case 'copy':
+          copyCode(actionButton);
+          break;
+      }
+    }
+  });
+
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && modal?.dataset.state === 'open') {
+      closeModal();
+    }
+  });
+</script>

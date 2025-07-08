@@ -1,0 +1,1 @@
+- `index_url(url: str)`: Lee y memoriza el contenido de una página web para poder hacerle preguntas más tarde.

@@ -1,0 +1,1 @@
+- `translate_text(text_to_translate: str)`: Traduce un texto al español. Úsala cuando tengas una respuesta final en inglés y necesites presentarla al usuario en español.

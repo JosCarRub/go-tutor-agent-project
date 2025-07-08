@@ -1,0 +1,162 @@
+
+<section class="py-16 sm:py-20">
+  <div class="max-w-6xl xl:max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <div class="relative w-full min-h-[400px] flex items-center justify-center">
+        <div class="absolute inset-0 bg-purple-300/10 rounded-full blur-3xl"></div>
+        
+        <div class="relative w-full">
+          <div class="flex justify-center mb-4">
+            <div class="diagram-box-main p-4 text-center">
+              <div class="flex justify-center gap-3">
+                <img src="/gopher.svg" class="h-25 w-25" alt="GoAgent"/>
+              </div>
+              
+            </div>
+          </div>
+
+
+          <div class="relative h-24">
+            <svg class="absolute inset-0 w-full h-full" width="100%" height="100%">
+
+              <line x1="50%" y1="0" x2="20%" y2="100%" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 4" />
+
+              <line x1="50%" y1="0" x2="40%" y2="100%" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 4" />
+
+              <line x1="50%" y1="0" x2="60%" y2="100%" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 4" />
+
+              <line x1="50%" y1="0" x2="80%" y2="100%" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 4" />
+            </svg>
+          </div>
+
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+            <div class="tool-box">
+              <img src="/icons/chroma.svg" class="h-6 w-6 mx-auto mb-2" alt="ChromaDB"/>
+              <h4 class="font-semibold text-sm">RAG</h4>
+              <p class="text-xs text-[var(--text-secondary)]">ChromaDB</p>
+            </div>
+            <div class="tool-box">
+              <img src="/icons/reader.svg" class="h-6 w-6 mx-auto mb-2" alt="File Reader"/>
+              <h4 class="font-semibold text-sm">Lector Archivos</h4>
+              <p class="text-xs text-[var(--text-secondary)]">/data</p>
+            </div>
+            <div class="tool-box">
+              <img src="/icons/lupa.svg" class="h-6 w-6 mx-auto mb-2" alt="Indexer"/>
+              <h4 class="font-semibold text-sm">Indexador</h4>
+              <p class="text-xs text-[var(--text-secondary)]">Contexto</p>
+            </div>
+            <div class="tool-box">
+              <img src="/icons/docker.svg" class="h-6 w-6 mx-auto mb-2" alt="Translator"/>
+              <h4 class="font-semibold text-sm">Sandbox</h4>
+              <p class="text-xs text-[var(--text-secondary)]">Go Executor Service Container</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl xl:text-4xl font-bold text-[var(--text-primary)]">Inteligencia Artificial Personalizada</h2>
+        <p class="mt-4 text-lg text-[var(--text-secondary)]">
+          El agente está construido con un enfoque modular y extensible, utilizando Gemini como modelo principal pero con capacidad de adaptación.
+        </p>
+        <ul class="mt-8 space-y-6 text-left">
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg"><img src="/icons/python.svg" class="h-10 w-10" alt="Python Icon" /></div>
+            <div>
+              <h3 class="font-semibold text-[var(--text-primary)]">SmolAgents & FastAPI</h3>
+              <p class="text-sm text-[var(--text-secondary)]">Un framework ligero y rápido para orquestar la lógica del agente y sus herramientas.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0  w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg"><img src="/icons/tools.svg" class="h-12 w-12" alt="Tools Icon" /></div>
+            <div>
+              <h3 class="font-semibold text-[var(--text-primary)]">Sistema de 4 Herramientas</h3>
+              <p class="text-sm text-[var(--text-secondary)]">Equipado con Sandbox de Go en un contenedor, Indexador, Lector de Archivos y un potente sistema RAG sobre ChromaDB.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0  w-14 h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg"><img src="/icons/gemini.svg" class="h-12 w-12" alt="AI Model Icon" /></div>
+            <div>
+              <h3 class="font-semibold text-[var(--text-primary)]">Modelo Extensible</h3>
+              <p class="text-sm text-[var(--text-secondary)]">Aunque Gemini es el motor principal, la arquitectura permite integrar modelos de Mistral y OpenAI.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+    .tech-plate {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      padding: 1.5rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+    .tech-plate:hover {
+      transform: translateY(-4px);
+      border-color: var(--go-color);
+      background-color: var(--bg-primary);
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+    .tech-tooltip {
+      position: absolute;
+      bottom: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      opacity: 0;
+      padding: 0.25rem 0.75rem;
+      background-color: var(--go-color-dark);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 9999px;
+      white-space: nowrap;
+      transition: all 0.3s ease-in-out;
+      pointer-events: none;
+    }
+  
+    .diagram-box, .diagram-box-main, .diagram-box-side {
+      padding: 0.75rem 1.25rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .diagram-box-main {
+      background-color: var(--bg-primary);
+      border-color: var(--go-color);
+      padding: 1rem 1.5rem;
+    }
+    .diagram-box-side {
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.5rem 1rem;
+    }
+    .diagram-arrow {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+    }
+  
+    .tool-box {
+      padding: 1rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      height: 100%; 
+    }
+  </style>

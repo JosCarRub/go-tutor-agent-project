@@ -1,0 +1,74 @@
+<section class="py-8 sm:py-16 lg:py-20">
+  <div class="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+      
+
+      <div class="relative w-full h-full flex items-center justify-center order-2 md:order-1">
+
+        <div class="w-full max-w-sm sm:max-w-md bg-[#282c34] rounded-lg shadow-2xl border border-white/10 overflow-hidden">
+          <div class="h-6 sm:h-8 bg-gray-800 flex items-center px-3 sm:px-4">
+            <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+            <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500 ml-1.5 sm:ml-2"></div>
+            <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 ml-1.5 sm:ml-2"></div>
+          </div>
+          <div class="p-3 sm:p-4 text-xs sm:text-sm overflow-x-auto">
+            <pre class="astro-code github-dark" style="background-color: #282c34; overflow-x: auto;"><code><span class="line"><span style="color: #7F848E">---</span></span>
+<span class="line"><span style="color: #C678DD">import</span> <span style="color: #E06C75">ChatWindow</span> <span style="color: #C678DD">from</span> <span style="color: #98C379">'../components/ChatWindow.tsx'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">import</span> <span style="color: #E06C75">Layout</span> <span style="color: #C678DD">from</span> <span style="color: #98C379">'../layouts/Layout.astro'</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #7F848E">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E06C75">&lt;Layout</span> <span style="color: #D19A66">title</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">"Go Tutor Agent"</span><span style="color: #E06C75">&gt;</span></span>
+<span class="line">  <span style="color: #ABB2BF; font-style: italic">&lt;!-- HTML estático renderizado en el servidor --&gt;</span></span>
+<span class="line">  <span style="color: #E06C75">&lt;h1&gt;</span><span style="color: #ABB2BF">Aprende Go con IA</span><span style="color: #E06C75">&lt;/h1&gt;</span></span>
+<span class="line">  </span>
+<span class="line">  <span style="color: #ABB2BF; font-style: italic">&lt;!-- Solo se hidrata cuando es necesario --&gt;</span></span>
+<span class="line">  <span style="color: #E06C75">&lt;ChatWindow</span> <span style="color: #D19A66">client:load</span> <span style="color: #E06C75">/&gt;</span></span>
+<span class="line"><span style="color: #E06C75">&lt;/Layout&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// ✨ Astro Islands Architecture:</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// • HTML estático = carga instantánea</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// • JS interactivo = solo donde se necesita</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// • Zero JS por defecto = rendimiento óptimo</span></span></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna de Texto -->
+      <div class="text-center md:text-left order-1 md:order-2">
+        <h2 class="text-2xl sm:text-3xl xl:text-4xl font-bold text-[var(--text-primary)]">Frontend Moderno y Optimizado</h2>
+        <p class="mt-3 sm:mt-4 text-base sm:text-lg text-[var(--text-secondary)]">
+          Construido con Astro para un rendimiento excepcional. La interfaz es estática por defecto, enviando cero JavaScript al navegador para una carga instantánea.
+        </p>
+        <ul class="mt-6 sm:mt-8 space-y-4 sm:space-y-6 text-left">
+          <li class="flex items-start gap-3 sm:gap-4">
+            <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <img src="/icons/astro.svg" class="h-8 w-8 sm:h-12 sm:w-12" alt="Astro Icon" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-[var(--text-primary)] text-sm sm:text-base">Astro</h3>
+              <p class="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">Arquitectura de Islas para una interactividad optimizada.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3 sm:gap-4">
+            <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <img src="/icons/react.svg" class="h-8 w-8 sm:h-12 sm:w-12" alt="React Icon" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-[var(--text-primary)] text-sm sm:text-base">React (Preact)</h3>
+              <p class="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">Los componentes interactivos, como el chat, se integran como islas de Preact.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3 sm:gap-4">
+            <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <img src="/icons/tailwind.svg" class="h-8 w-8 sm:h-12 sm:w-12" alt="Tailwind CSS Icon" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-[var(--text-primary)] text-sm sm:text-base">Tailwind CSS</h3>
+              <p class="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">Diseño rápido y consistente con un enfoque "utility-first".</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

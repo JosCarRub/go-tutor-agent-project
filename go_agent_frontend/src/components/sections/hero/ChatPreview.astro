@@ -1,0 +1,64 @@
+---
+---
+<div class="relative w-full max-w-md mx-auto ">
+    <div class="absolute inset-0 bg-[var(--go-color)]/20 rounded-xl blur-xl transform scale-110 opacity-60"></div>
+    <div class="relative bg-[var(--bg-secondary)] rounded-xl shadow-2xl border border-[var(--border)] overflow-hidden">
+      <!-- Chat Header -->
+      <div class="bg-[var(--bg-primary)] border-b border-[var(--border)] px-4 py-3 flex items-center justify-between">
+
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          <span class="text-sm font-medium text-[var(--text-primary)]">Go Tutor Agent</span>
+        </div>
+
+        <div class="flex space-x-1"><div class="w-3 h-3 bg-green-400 rounded-full"></div><div class="w-3 h-3 bg-yellow-400 rounded-full"></div><div class="w-3 h-3 bg-red-400 rounded-full"></div></div>
+      </div>
+      <!-- Chat Messages -->
+      <div class="p-4 space-y-4 h-64 overflow-hidden">
+            
+        <!-- Assistant Message -->
+        <div class="flex items-start space-x-3">
+
+          <div class="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
+            <img src="/gopher.svg" alt="">
+          </div>
+
+          <div class="bg-[var(--bg-primary)] rounded-lg px-3 py-2 max-w-[200px]">
+            <p class="text-sm text-[var(--text-primary)]">¡Hola! Soy tu <strong>Go Tutor</strong>. ¿Qué quieres aprender hoy?</p>
+          </div>
+        </div>
+
+        <!-- User Message -->
+        <div class="flex items-start space-x-3 justify-end">
+          <div class="bg-[var(--go-color)] rounded-lg px-3 py-2 max-w-[180px]">
+            <p class="text-sm text-[var(--go-color-dark)]">¿Cómo funcionan las goroutines?</p>
+          </div>
+          
+        </div>
+
+        <!-- Assistant Typing -->
+        <div class="flex items-start space-x-3">
+
+          <div class="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
+            <img src="/gopher.svg" alt="">
+          </div>
+
+          <div class="bg-[var(--bg-primary)] rounded-lg px-3 py-2">
+            <div class="flex space-x-1">
+              <div class="w-2 h-2 bg-[var(--text-secondary)] rounded-full animate-bounce"></div>
+              <div class="w-2 h-2 bg-[var(--text-secondary)] rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+              <div class="w-2 h-2 bg-[var(--text-secondary)] rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Chat Input Preview -->
+      <div class="border-t border-[var(--border)] px-4 py-3">
+        <div class="flex items-center space-x-2">
+          <div class="flex-1 bg-[var(--bg-primary)] rounded-lg px-3 py-2 border border-[var(--border)]"><span class="text-sm text-[var(--text-secondary)]">Escribe tu pregunta...</span></div>
+          <button class="w-8 h-8 bg-[var(--go-color)] rounded-lg flex items-center justify-center"><svg class="w-4 h-4 text-[var(--go-color-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>

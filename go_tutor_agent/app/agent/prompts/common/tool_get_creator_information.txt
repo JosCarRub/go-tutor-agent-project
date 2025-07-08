@@ -1,0 +1,1 @@
+- `get_creator_information()`: Devuelve información sobre el creador de este sistema de IA. Úsala SOLAMENTE si el usuario pregunta explícitamente quién te creó o desarrolló.

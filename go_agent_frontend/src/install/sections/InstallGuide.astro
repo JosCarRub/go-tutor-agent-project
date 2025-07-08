@@ -1,0 +1,136 @@
+---
+const installSteps = [
+  { type: 'comment', text: '# 1. Clona el repositorio' },
+  { type: 'command', text: 'git clone https://github.com/JosCarRub/go-tutor-agent-project' },
+  { type: 'command', text: 'cd go-tutor-agent' },
+  { type: 'comment', text: '# 2. Crea y edita tu archivo .env' },
+  { type: 'command', text: 'cp .env.example .env' },
+  { type: 'comment', text: '# (Pega el contenido de la derecha)' },
+  { type: 'comment', text: '# 3. Levanta todo el stack' },
+  { type: 'command', text: 'docker-compose up --build' },
+];
+
+const envWarning = `
+# ⚠️ ADVERTENCIA IMPORTANTE ⚠️
+# *** INCLUYENDO SOLO UNA API KEY, EL AGENTE FUNCIONARÁ ***
+# *** SE RECOMIENDA UTILIZAR LA API KEY GRATUITA DE aistudio.google.com ***
+# *** PARA UNA EXPERIENCIA SUPERIOR, USA EL MODELO gemini-2.5-pro ***
+`.trim();
+
+const envFileContent = `
+# --- Agente --- 
+OPENROUTER_API_KEY="xxxxx"
+MISTRAL_MODEL_ID="xxxxx"
+
+GEMINI_API_KEY="xxxxxxx"
+GEMINI_MODEL_ID='gemini-2.5-pro'
+
+OPENAI_API_KEY='xxxxxxx'
+OPENAI_MODEL_ID='xxxxxxx'
+
+# --- mongo ---
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=password
+
+ME_CONFIG_BASICAUTH_USERNAME=admin
+ME_CONFIG_BASICAUTH_PASSWORD=password
+
+# --- spring ---
+SPRING_ADMIN_USER=admin
+SPRING_ADMIN_PASSWORD=secret_password
+
+# --- URL del Microservicio de Ejecución de Go ---
+GO_EXECUTOR_URL="http://go-executor:8090"
+`.trim();
+---
+<section id="install-guide-section" class="py-16 sm:py-20">
+  <div class="max-w-6xl xl:max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl xl:text-4xl font-bold text-[var(--text-primary)]">Guía de Instalación</h2>
+
+      <p class="mt-3 text-md xl:text-lg text-[var(--text-secondary)]">
+        Sigue los comandos de la terminal y utiliza del .env de muestra para configurar tu propio archivo <code>.env</code>.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+      
+      <div class="terminal-window-guide">
+        <div class="terminal-header"><div class="terminal-dots"></div><div class="terminal-title">bash</div></div>
+        <div class="terminal-body">
+          <code>
+            {installSteps.map(step => (
+              <div class="line group">
+                {step.type === 'comment' ? <span class="comment">{step.text}</span> : <>
+                  <span class="prompt-symbol">$</span>
+                  <span class="command">{step.text}</span>
+                  <button class="copy-btn" title="Copiar comando">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  </button>
+                </>}
+              </div>
+            ))}
+            <div class="line"><span class="prompt-symbol"><span class="blink">█</span></span></div>
+          </code>
+        </div>
+      </div>
+
+      <div class="terminal-window-guide">
+        <div class="terminal-header">
+          <div class="terminal-dots"></div>
+          <div class="terminal-title">.env</div>
+          <button id="copy-env-btn" class="copy-btn-env" title="Copiar contenido">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+          </button>
+        </div>
+        <div class="terminal-body">
+          <pre><code><span class="warning">{envWarning}</span>{`
+
+${envFileContent}`}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .warning {
+    color: #f59e0b; 
+    font-weight: 500;
+  }
+  .copy-btn-env {
+    background: none; border: none; color: #6b7280; cursor: pointer;
+    transition: color 0.2s; margin-left: auto;
+  }
+  .copy-btn-env:hover { color: #d4d4d4; }
+</style>
+
+<script define:vars={{ envFileContent, envWarning }}>
+  document.addEventListener('astro:page-load', () => {
+    const guide = document.querySelector('#install-guide-section'); 
+    if (!guide) return;
+
+
+    guide.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const commandText = button.previousElementSibling?.textContent || '';
+        navigator.clipboard.writeText(commandText).then(() => {
+          const originalIcon = button.innerHTML;
+          button.innerHTML = `<svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+          setTimeout(() => { button.innerHTML = originalIcon; }, 2000);
+        });
+      });
+    });
+
+
+    const copyEnvBtn = guide.querySelector('#copy-env-btn');
+    copyEnvBtn?.addEventListener('click', () => {
+      const fullEnvText = `${envWarning}\n\n${envFileContent}`;
+      navigator.clipboard.writeText(fullEnvText).then(() => {
+        const originalIcon = copyEnvBtn.innerHTML;
+        copyEnvBtn.innerHTML = `<svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+        setTimeout(() => { copyEnvBtn.innerHTML = originalIcon; }, 2000);
+      });
+    });
+  });
+</script>
