@@ -302,8 +302,7 @@ The Go Gopher images used in the `info` and `install` pages are from the **Golan
 This agent system was designed and developed by **José Carlos Cataluña Rubio**.
 
 -   **GitHub:** [@JosCarRub](https://github.com/JosCarRub)
--   **Contact:** [contacto@josecarlosdev.com](mail to:contacto@josecarlosdev.com)
-
+-   **Contact:** [contacto@josecarlosdev.com]
 ## 📄 License
 
 This project is licensed under the MIT License.
